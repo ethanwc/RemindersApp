@@ -21,7 +21,6 @@ const Item = (props: categoryInterface) => {
       <View style={{flexDirection: 'row'}}>
         <View style={{margin: 5}}>{check}</View>
         <View style={{margin: 5, marginLeft: 0}}>{checked}</View>
-
         <View>
           <Text style={Typography.Title}>Buy food at the store</Text>
           <Text style={Typography.Body}>Im Hungry</Text>

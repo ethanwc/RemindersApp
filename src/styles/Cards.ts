@@ -4,8 +4,8 @@ export const CategoryCard = {
   flexDirection: 'row',
   flex: 1,
   padding: 10,
-  paddingTop: 15,
-  paddingBottom: 40,
+  paddingTop: 20,
+  paddingBottom: 120,
   marginTop: 5,
   marginLeft: 2.5,
   marginRight: 2.5,
@@ -21,13 +21,12 @@ export const TaskCard = {
   borderColor: Colors.dark,
 };
 
-
 export const InfoCard = {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    borderWidth: 0.5,
-    borderColor: Colors.dark,
-  };
+  flexDirection: 'row',
+  justifyContent: 'center',
+  borderWidth: 0.5,
+  borderColor: Colors.dark,
+};
 
 export const ItemCard = {
   flexDirection: 'row',
@@ -39,4 +38,16 @@ export const ItemCard = {
   borderBottomWidth: 1,
   borderTopRadious: 25,
   borderColor: Colors.dark,
+};
+
+export const CreateCard = {
+  position: 'absolute',
+  width: 65,
+  height: 65,
+  backgroundColor: Colors.orange,
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: 100,
+  right: 10,
+  bottom: 10,
 };

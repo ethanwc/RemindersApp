@@ -4,11 +4,7 @@ import {Cards, Typography} from '../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../styles';
 
-export interface categoryInterface {
-  banana: string;
-}
-
-const TaskBar = (props: categoryInterface) => {
+const TaskBar = (props: any) => {
   return (
     <View style={Cards.TaskCard}>
       <View
