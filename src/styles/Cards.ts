@@ -21,12 +21,22 @@ export const TaskCard = {
   borderColor: Colors.dark,
 };
 
+
+export const InfoCard = {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderWidth: 0.5,
+    borderColor: Colors.dark,
+  };
+
 export const ItemCard = {
   flexDirection: 'row',
-
+  justifyContent: 'space-between',
   flex: 1,
-  padding: 4,
-  borderRadius: 5,
-  borderWidth: 0.5,
+  padding: 5,
+  marginTop: 5,
+  borderBottomColor: Colors.orange,
+  borderBottomWidth: 1,
+  borderTopRadious: 25,
   borderColor: Colors.dark,
 };

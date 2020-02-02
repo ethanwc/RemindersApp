@@ -12,7 +12,7 @@ const Category = (props: categoryInterface) => {
   return (
     <View style={Cards.CategoryCard}>
       <View style={{margin: 5}}>{myIcon}</View>
-      <View style={{}}>
+      <View>
         <Text style={Typography.Title}>Grocery List</Text>
         <Text style={Typography.Body}>3 Tasks</Text>
       </View>

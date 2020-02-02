@@ -1,7 +1,7 @@
 import {Colors} from './Colors';
 
 export const Title = {
-  fontSize: 25,
+  fontSize:25,
   color: Colors.dark,
 };
 
