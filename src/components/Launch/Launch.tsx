@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import TaskBar from '../containers/TaskBar';
+import TaskBar from '../../containers/TaskBar';
 import {View, TouchableHighlight, Text, Button} from 'react-native';
-import Category from '../containers/Category';
+import Category from '../../containers/Category/Category';
 import {FlatList} from 'react-native-gesture-handler';
-import Create from './Create';
+import Create from '../Create';
 import Modal from 'react-native-modal';
 
 const Launch = (props: any) => {
@@ -56,7 +56,7 @@ const Launch = (props: any) => {
         )}
         keyExtractor={item => item.id}
       />
-      <Create toggleCreate={setTemp} />
+      <Create toggleCreate={setTemp} navigation={props.navigation}/>
       
       <Modal isVisible={temp}>
         <View style={{flex: 1}}>

@@ -1,19 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TouchableHighlight, FlatList} from 'react-native';
-import {Cards, Typography} from '../styles';
+import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Colors} from '../styles';
+import {Colors} from '../../styles';
 import Item from './Item';
 
 export interface categoryInterface {
   banana: string;
 }
-const check = <Icon name="circle-o" size={35} color={Colors.Colors.blue} />;
+const check = <Icon name="circle-o" size={35} color={Colors.Colors.one} />;
 const checked = (
-  <Icon name="check-circle-o" size={35} color={Colors.Colors.blue} />
+  <Icon name="check-circle-o" size={35} color={Colors.Colors.one} />
 );
 
-const quit = <Icon name="close" size={35} color={Colors.Colors.dark} />;
+const quit = <Icon name="close" size={35} color={Colors.Colors.one} />;
 
 const DATA = [
   {
@@ -83,9 +83,34 @@ const DATA = [
 ];
 
 const Items = (props: categoryInterface) => {
+  const [filter, setFilter] = useState('All');
+  const FILTERS = ['All', 'Incomplete', 'Important', 'Date'];
+
+  const filterItems = FILTERS.map((f: string) =>
+    filter === f ? (
+      <Text style={Typography.ActiveFilter}>{f}</Text>
+    ) : (
+      <Text onPress={() => setFilter(f)} style={Typography.PassiveFilter}>
+        {f}
+      </Text>
+    ),
+  );
   return (
     <View style={{flex: 1}}>
-      <View style={{flex: 1}}></View>
+      <View style={{flex: 1, paddingHorizontal: 20}}>
+        <View style={{alignItems: 'center'}}>
+          <Text style={Typography.Title}>Grocery List</Text>
+          <Text style={Typography.Body}>Grocery List</Text>
+        </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}>
+          {filterItems}
+        </View>
+      </View>
       <View style={{flex: 2}}>
         <FlatList
           data={DATA}

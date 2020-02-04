@@ -1,7 +1,8 @@
 export const Colors = {
-  orange: '#EF9450',
-  white: '#E2D1B8',
-  dark: '#20252A',
-  blue: '#24414F',
-  snow: '#fffafa'
+  one: '#114b5f',
+  two: '#484041',
+  three: '#8cc7a1',
+  four: '#434371',
+  five: '#6b2737',
 };
+//114b5f-484041-8cc7a1-434371-6b2737

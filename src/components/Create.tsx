@@ -10,9 +10,9 @@ export interface createButton {
 const Create = (props: any) => {
   return (
     <TouchableHighlight
-      onPress={() => props.toggleCreate(true)}
+      onPress={() => props.navigation.navigate("CreateItem")}
       style={Cards.CreateCard}>
-      <Icon name="plus" size={30} color={Colors.Colors.snow} />
+      <Icon name="plus" size={30} color={Colors.Colors.one} />
     </TouchableHighlight>
   );
 };

@@ -1,19 +1,19 @@
 import React from 'react';
 import {View, Text, TouchableHighlight} from 'react-native';
-import {Cards, Typography} from '../styles';
+import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {Colors} from '../styles';
+import {Colors} from '../../styles';
 import DatePicker from 'react-native-datepicker';
 
 export interface categoryInterface {
   banana: string;
 }
-const check = <Icon name="circle-o" size={35} color={Colors.Colors.blue} />;
+const check = <Icon name="circle-o" size={35} color={Colors.Colors.one} />;
 const checked = (
-  <Icon name="check-circle-o" size={35} color={Colors.Colors.blue} />
+  <Icon name="check-circle-o" size={35} color={Colors.Colors.one} />
 );
 
-const quit = <Icon name="close" size={35} color={Colors.Colors.dark} />;
+const quit = <Icon name="close" size={35} color={Colors.Colors.one} />;
 
 const Item = (props: categoryInterface) => {
   return (

@@ -1,7 +1,8 @@
-import Launch from './src/components/Launch';
+import Launch from './src/components/Launch/Launch';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import Items from './src/containers/Items';
+import Items from './src/containers/Item/Items';
+import CreateItem from './src/components/CreateItem';
 
 const AppNavigator = createStackNavigator({
   LaunchScreen: {
@@ -13,6 +14,9 @@ const AppNavigator = createStackNavigator({
   },
   Items: {
     screen: Items,
+  },
+  CreateItem: {
+    screen: CreateItem,
   },
 });
 
