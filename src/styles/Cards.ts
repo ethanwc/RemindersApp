@@ -31,12 +31,19 @@ export const InfoCard = {
 export const ItemCard = {
   flexDirection: 'row',
   justifyContent: 'space-between',
-  flex: 1,
   padding: 5,
   marginTop: 5,
   borderBottomColor: Colors.five,
   borderBottomWidth: 1,
-  borderTopRadious: 25,
+  borderColor: Colors.one,
+};
+
+export const DetailedItemCard = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  padding: 5,
+  marginTop: 5,
+  borderBottomColor: Colors.five,
   borderColor: Colors.one,
 };
 

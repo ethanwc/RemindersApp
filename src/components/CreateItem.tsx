@@ -66,7 +66,7 @@ const CreateItem = (props: any) => {
           name="close"
           size={25}
           color={Colors.Colors.three}
-          style={{flex: 1, backgroundColor: 'red', alignItems: 'center'}}
+          style={{backgroundColor: 'red', alignItems: 'center'}}
         />
       </View>
       <TextInput value={''} placeholder={'Date & Time'} />

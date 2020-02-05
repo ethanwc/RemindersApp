@@ -4,6 +4,7 @@ import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../styles';
 import Item from './Item';
+import DetailedItem from './DetailedItem';
 
 export interface categoryInterface {
   banana: string;
@@ -97,7 +98,7 @@ const Items = (props: categoryInterface) => {
   );
   return (
     <View style={{flex: 1}}>
-      <View style={{flex: 1, paddingHorizontal: 20}}>
+      <View style={{paddingHorizontal: 20}}>
         <View style={{alignItems: 'center'}}>
           <Text style={Typography.Title}>Grocery List</Text>
           <Text style={Typography.Body}>Grocery List</Text>
@@ -111,13 +112,11 @@ const Items = (props: categoryInterface) => {
           {filterItems}
         </View>
       </View>
-      <View style={{flex: 2}}>
-        <FlatList
-          data={DATA}
-          renderItem={({item}) => <Item banana={item.title} />}
-          keyExtractor={item => item.id}
-        />
-      </View>
+      <FlatList
+        data={DATA}
+        renderItem={({item}) => <DetailedItem banana={''} />}
+        keyExtractor={item => item.id}
+      />
     </View>
   );
 };
