@@ -4,7 +4,7 @@ import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../styles';
 
-const myIcon = <Icon name="list" size={25} color={Colors.Colors.three} />;
+const myIcon = <Icon name="map" size={25} color={Colors.Colors.three} />;
 
 const Category = (props: any) => {
   return (

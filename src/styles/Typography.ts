@@ -20,11 +20,12 @@ export const ActiveFilter = {
   fontSize: 25,
   color: Colors.four,
   borderBottomColor: Colors.one,
+  paddingBottom: 15,
   borderBottomWidth: 5,
 };
 
 export const PassiveFilter = {
   fontSize: 25,
   color: Colors.four,
-  borderBottomWidth: 1,
+  paddingBottom: 15,
 };

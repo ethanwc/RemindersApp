@@ -4,8 +4,7 @@ import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../styles';
 import Item from './Item';
-import DetailedItem from './DetailedItem';
-import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
+import GestureRecognizer from 'react-native-swipe-gestures';
 
 export interface categoryInterface {
   banana: string;
@@ -67,7 +66,6 @@ const DATA = [
 const Items = (props: categoryInterface) => {
   const [filter, setFilter] = useState('All');
   const FILTERS = ['All', 'Incomplete', 'Important', 'Date'];
-  const [bg, Setbg] = useState('black');
   const [selected, setSelected] = useState('');
 
   const onSwipeLeft = (gestureState: any) => {
@@ -97,8 +95,8 @@ const Items = (props: categoryInterface) => {
     <View style={{flex: 1}}>
       <View style={{paddingHorizontal: 20}}>
         <View style={{alignItems: 'center'}}>
-          <Text style={Typography.Title}>Grocery List</Text>
-          <Text style={Typography.Body}>Grocery List</Text>
+          {/* <Text style={Typography.Title}>Grocery List</Text> */}
+          {/* <Text style={Typography.Body}>Grocery List</Text> */}
         </View>
         <GestureRecognizer
           onSwipeLeft={onSwipeLeft}
@@ -106,7 +104,7 @@ const Items = (props: categoryInterface) => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            alignItems: 'center',
+            // alignItems: 'center',
           }}>
           {filterItems}
         </GestureRecognizer>
@@ -114,7 +112,7 @@ const Items = (props: categoryInterface) => {
       <FlatList
         data={DATA}
         renderItem={({item}) => (
-          <Item banana={item.id} setSelected={setSelected} />
+          <Item id={item.id} selected={selected}  setSelected={setSelected} />
         )}
         keyExtractor={item => item.id}
       />

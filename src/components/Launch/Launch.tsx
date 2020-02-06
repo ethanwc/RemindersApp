@@ -45,6 +45,16 @@ const Launch = (props: any) => {
   ];
   return (
     <View style={{flex: 1}}>
+      <View style={{paddingLeft: 40}}>
+        <Text style={{fontSize: 40}}>Task</Text>
+        <Text style={{fontSize: 40, fontFamily: 'bold', color: 'blue'}}>
+          Manager
+        </Text>
+        <View style={{flexDirection: 'row'}}>
+          <Text style={{fontFamily: 'bold', color: 'black'}}>Sunday, </Text>
+          <Text>12th March</Text>
+        </View>
+      </View>
       <TaskBar />
       <FlatList
         data={DATA}
@@ -56,8 +66,8 @@ const Launch = (props: any) => {
         )}
         keyExtractor={item => item.id}
       />
-      <Create toggleCreate={setTemp} navigation={props.navigation}/>
-      
+      <Create toggleCreate={setTemp} navigation={props.navigation} />
+
       <Modal isVisible={temp}>
         <View style={{flex: 1}}>
           <Text>I am the modal content!</Text>

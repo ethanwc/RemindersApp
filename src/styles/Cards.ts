@@ -33,9 +33,6 @@ export const ItemCard = {
   justifyContent: 'space-between',
   padding: 5,
   marginTop: 5,
-  borderBottomColor: Colors.five,
-  borderBottomWidth: 1,
-  borderColor: Colors.one,
 };
 
 export const DetailedItemCard = {
@@ -44,6 +41,16 @@ export const DetailedItemCard = {
   padding: 5,
   marginTop: 5,
   borderBottomColor: Colors.five,
+  borderBottomWidth: 0.5,
+  borderColor: Colors.one,
+};
+
+export const ItemCardTime = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  marginTop: 5,
+  borderBottomColor: Colors.five,
+  borderBottomWidth: 0.5,
   borderColor: Colors.one,
 };
 
