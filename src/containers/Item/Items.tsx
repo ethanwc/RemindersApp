@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableHighlight, FlatList} from 'react-native';
+import {View, Text, TouchableHighlight, FlatList, Alert} from 'react-native';
 import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../styles';
 import Item from './Item';
 import DetailedItem from './DetailedItem';
+import GestureRecognizer, {swipeDirections} from 'react-native-swipe-gestures';
 
 export interface categoryInterface {
   banana: string;
@@ -50,35 +51,15 @@ const DATA = [
     title: 'Eighth Item',
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
+    id: '58694a0f-3da1-471f-bd96-145571e29d79',
     title: 'Eighth Item',
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
+    id: '58694a0f-3da1-471f-bd96-145571e29d80',
     title: 'Eighth Item',
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
-    title: 'Eighth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
-    title: 'Eighth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
-    title: 'Eighth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
-    title: 'Eighth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
-    title: 'Eighth Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d78',
+    id: '58694a0f-3da1-471f-bd96-145571e29d81',
     title: 'Eighth Item',
   },
 ];
@@ -86,6 +67,17 @@ const DATA = [
 const Items = (props: categoryInterface) => {
   const [filter, setFilter] = useState('All');
   const FILTERS = ['All', 'Incomplete', 'Important', 'Date'];
+  const [bg, Setbg] = useState('black');
+  const [selected, setSelected] = useState('');
+
+  const onSwipeLeft = (gestureState: any) => {
+    if (FILTERS.indexOf(filter) > 0)
+      setFilter(FILTERS[FILTERS.indexOf(filter) - 1]);
+  };
+  const onSwipeRight = (gestureState: any) => {
+    if (FILTERS.indexOf(filter) < FILTERS.length - 1)
+      setFilter(FILTERS[FILTERS.indexOf(filter) + 1]);
+  };
 
   const filterItems = FILTERS.map((f: string) =>
     filter === f ? (
@@ -96,6 +88,11 @@ const Items = (props: categoryInterface) => {
       </Text>
     ),
   );
+
+  const config = {
+    velocityThreshold: 0.05,
+    directionalOffsetThreshold: 20,
+  };
   return (
     <View style={{flex: 1}}>
       <View style={{paddingHorizontal: 20}}>
@@ -103,18 +100,22 @@ const Items = (props: categoryInterface) => {
           <Text style={Typography.Title}>Grocery List</Text>
           <Text style={Typography.Body}>Grocery List</Text>
         </View>
-        <View
+        <GestureRecognizer
+          onSwipeLeft={onSwipeLeft}
+          onSwipeRight={onSwipeRight}
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'center',
           }}>
           {filterItems}
-        </View>
+        </GestureRecognizer>
       </View>
       <FlatList
         data={DATA}
-        renderItem={({item}) => <DetailedItem banana={''} />}
+        renderItem={({item}) => (
+          <Item banana={item.id} setSelected={setSelected} />
+        )}
         keyExtractor={item => item.id}
       />
     </View>
