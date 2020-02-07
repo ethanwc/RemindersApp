@@ -36,6 +36,8 @@ target 'RemindersApp' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
+
   target 'RemindersAppTests' do
     inherit! :search_paths
     # Pods for testing
