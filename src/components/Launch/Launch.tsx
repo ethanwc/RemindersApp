@@ -45,15 +45,15 @@ const Launch = (props: any) => {
   ];
   return (
     <View style={{flex: 1}}>
-      <View style={{paddingLeft: 40}}>
-        <Text style={{fontSize: 40}}>Task</Text>
+      <View style={{paddingLeft: 40, flexDirection: 'row'}}>
+        <Text style={{fontSize: 40}}>Task </Text>
         <Text style={{fontSize: 40, fontFamily: 'bold', color: 'blue'}}>
           Manager
         </Text>
-        <View style={{flexDirection: 'row'}}>
-          <Text style={{fontFamily: 'bold', color: 'black'}}>Sunday, </Text>
-          <Text>12th March</Text>
-        </View>
+      </View>
+      <View style={{flexDirection: 'row', paddingLeft: 40}}>
+        <Text style={{fontFamily: 'bold', color: 'black'}}>Sunday, </Text>
+        <Text>12th March</Text>
       </View>
       <TaskBar />
       <FlatList

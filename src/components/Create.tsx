@@ -12,7 +12,7 @@ const Create = (props: any) => {
     <TouchableHighlight
       onPress={() => props.navigation.navigate("CreateItem")}
       style={Cards.CreateCard}>
-      <Icon name="plus" size={30} color={Colors.Colors.one} />
+      <Icon name="plus" size={30} color={Colors.Colors.three} />
     </TouchableHighlight>
   );
 };

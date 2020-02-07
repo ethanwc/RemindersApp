@@ -3,6 +3,7 @@ import {View, Picker, FlatList, TextInput, Button, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../styles';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import ImagePicker from 'react-native-image-picker';
 
 const CreateItem = (props: any) => {
   const [language, setLaunguage] = useState('');
@@ -44,6 +45,47 @@ const CreateItem = (props: any) => {
 
   const mydate = new Date('2020-06-12T14:42:42');
   const mode = 'date';
+
+  const options = {
+    title: 'Select Avatar',
+    storageOptions: {
+      skipBackup: true,
+      path: 'images',
+    },
+  };
+
+  // Launch Camera:
+  const lll = () => {
+    ImagePicker.launchCamera(options, response => {
+      // Same code as in above section!
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = {uri: response.uri};
+      }
+    });
+  };
+
+  const ll = () => {
+    // Open Image Library:
+    ImagePicker.launchImageLibrary(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = {uri: response.uri};
+      }
+      // Same code as in above section!
+    });
+  };
 
   const pickerItems = DATA.map((i: any) => (
     <Picker.Item label={i.id} value={i.id} />
@@ -88,12 +130,14 @@ const CreateItem = (props: any) => {
           size={25}
           color={Colors.Colors.three}
           style={{alignItems: 'center'}}
+          onPress={() => lll()}
         />
         <Icon
           name="photo"
           size={25}
           color={Colors.Colors.three}
           style={{alignItems: 'center'}}
+          onPress={() => ll()}
         />
         <Icon
           name="map"
@@ -127,6 +171,7 @@ const CreateItem = (props: any) => {
         }}>
         <Text style={{color: 'white'}}>ADD TASK</Text>
       </View>
+
     </View>
   );
 };

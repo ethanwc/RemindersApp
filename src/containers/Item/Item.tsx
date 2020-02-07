@@ -7,21 +7,20 @@ import {
   Platform,
   UIManager,
   Alert,
+  Share,
 } from 'react-native';
 import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../styles';
 import DatePicker from 'react-native-datepicker';
 import GestureRecognizer from 'react-native-swipe-gestures';
-import SwipeGesture from './swipe-gesture';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
 
 export interface categoryInterface {
   id: string;
   selected: string;
   setSelected: Function;
 }
-const check = <Icon name="circle-o" size={35} color={Colors.Colors.one} />;
 const checked = (
   <Icon name="check-circle-o" size={35} color={Colors.Colors.one} />
 );
@@ -34,6 +33,8 @@ if (Platform.OS === 'android') {
 
 const Item = (props: categoryInterface) => {
   const [expanded, setExpanded] = useState(false);
+  const [complete, setComplete] = useState(true);
+  const [editing, setEditing] = useState(false);
 
   const changeLayout = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -42,10 +43,30 @@ const Item = (props: categoryInterface) => {
       props.setSelected('');
     } else props.setSelected(props.id);
     //on to off
-    setExpanded(!expanded);
+    if (!editing) setExpanded(!expanded);
   };
 
   const isExpanded = props.id === props.selected;
+
+  const check = (
+    <Icon
+      name="circle-o"
+      size={45}
+      color={Colors.Colors.one}
+      onPress={() => setComplete(!complete)}
+    />
+  );
+
+  const checked = (
+    <Icon
+      name="check-circle-o"
+      size={45}
+      color={Colors.Colors.one}
+      onPress={() => setComplete(!complete)}
+    />
+  );
+
+  const checkView = complete ? checked : check;
 
   return (
     <GestureRecognizer onSwipeLeft={() => console.log('swipe')}>
@@ -53,7 +74,7 @@ const Item = (props: categoryInterface) => {
         <View>
           <View style={isExpanded ? Cards.ItemCard : Cards.DetailedItemCard}>
             <View style={{flexDirection: 'row'}}>
-              <View style={{marginHorizontal: 10}}>{check}</View>
+              <View style={{marginHorizontal: 10}}>{checkView}</View>
               {/* <View style={{margin: 5, marginLeft: 0}}>{checked}</View> */}
               <View>
                 <Text style={Typography.Title}>Buy food at the store</Text>
@@ -112,6 +133,7 @@ const Item = (props: categoryInterface) => {
                 size={25}
                 color={Colors.Colors.three}
                 style={{alignItems: 'center'}}
+                onPress={() => Alert.alert('nav to editing')}
               />
               <Icon
                 name="star"
@@ -128,10 +150,27 @@ const Item = (props: categoryInterface) => {
               <Icon
                 name="share"
                 size={25}
+                onPress={() =>
+                  Share.share(
+                    {
+                      message:
+                        "BAM: we're helping your business with awesome React Native apps",
+                      url: 'http://bam.tech',
+                      title: 'Wow, did you see that?',
+                    },
+                    {
+                      // Android only:
+                      dialogTitle: 'Share BAM goodness',
+                      // iOS only:
+                      excludedActivityTypes: [
+                        'com.apple.UIKit.activity.PostToTwitter',
+                      ],
+                    },
+                  )
+                }
                 color={Colors.Colors.three}
                 style={{
                   alignItems: 'center',
-
                   paddingRight: 5,
                 }}
               />

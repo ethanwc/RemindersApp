@@ -3,6 +3,8 @@ import {Colors} from './Colors';
 export const Title = {
   fontSize: 25,
   color: Colors.dark,
+  margin: 0,
+  padding: 0
 };
 
 export const TaskNumber = {
@@ -14,6 +16,8 @@ export const TaskNumber = {
 export const Body = {
   fontSize: 15,
   color: Colors.blue,
+  margin: 0,
+  padding: 0
 };
 
 export const ActiveFilter = {
