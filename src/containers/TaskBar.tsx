@@ -1,8 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {Cards, Typography} from '../styles';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {Colors} from '../styles';
 
 const TaskBar = (props: any) => {
   return (

@@ -8,15 +8,14 @@ import {
   UIManager,
   Alert,
   Share,
+  Vibration,
 } from 'react-native';
 import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../styles';
-import DatePicker from 'react-native-datepicker';
 import GestureRecognizer from 'react-native-swipe-gestures';
-import {TouchableOpacity, TextInput} from 'react-native-gesture-handler';
 
-export interface categoryInterface {
+export interface itemInterface {
   id: string;
   selected: string;
   setSelected: Function;
@@ -31,10 +30,11 @@ if (Platform.OS === 'android') {
   UIManager.setLayoutAnimationEnabledExperimental(true);
 }
 
-const Item = (props: categoryInterface) => {
+const Item = (props: itemInterface) => {
   const [expanded, setExpanded] = useState(false);
   const [complete, setComplete] = useState(true);
   const [editing, setEditing] = useState(false);
+  const [star, setStar] = useState(false);
 
   const changeLayout = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -48,12 +48,17 @@ const Item = (props: categoryInterface) => {
 
   const isExpanded = props.id === props.selected;
 
+  const toggleCheck = () => {
+    Vibration.vibrate(20);
+    setComplete(!complete);
+  };
+
   const check = (
     <Icon
       name="circle-o"
       size={45}
       color={Colors.Colors.one}
-      onPress={() => setComplete(!complete)}
+      onPress={() => toggleCheck()}
     />
   );
 
@@ -62,7 +67,7 @@ const Item = (props: categoryInterface) => {
       name="check-circle-o"
       size={45}
       color={Colors.Colors.one}
-      onPress={() => setComplete(!complete)}
+      onPress={() => toggleCheck()}
     />
   );
 
@@ -87,7 +92,7 @@ const Item = (props: categoryInterface) => {
             style={{
               height: isExpanded ? null : 0,
               overflow: 'hidden',
-              paddingLeft: 55,
+              paddingLeft: 65,
             }}>
             <View style={Cards.ItemCardTime}>
               <View
@@ -133,13 +138,13 @@ const Item = (props: categoryInterface) => {
                 size={25}
                 color={Colors.Colors.three}
                 style={{alignItems: 'center'}}
-                onPress={() => Alert.alert('nav to editing')}
+                onPress={() => Alert.alert('editme')}
               />
               <Icon
                 name="star"
                 size={25}
-                color={Colors.Colors.three}
-                style={{alignItems: 'center'}}
+                color={star ? 'gold' : Colors.Colors.three}
+                onPress={() => setStar(!star)}
               />
               <Icon
                 name="paperclip"

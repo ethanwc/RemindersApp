@@ -2,22 +2,22 @@ import {Colors} from './Colors';
 
 export const Title = {
   fontSize: 25,
-  color: Colors.dark,
+  color: Colors.three,
   margin: 0,
-  padding: 0
+  padding: 0,
 };
 
 export const TaskNumber = {
   fontSize: 35,
 
-  color: Colors.orange,
+  color: Colors.one,
 };
 
 export const Body = {
   fontSize: 15,
-  color: Colors.blue,
+  color: Colors.four,
   margin: 0,
-  padding: 0
+  padding: 0,
 };
 
 export const ActiveFilter = {
@@ -33,3 +33,5 @@ export const PassiveFilter = {
   color: Colors.four,
   paddingBottom: 15,
 };
+
+export const TaskText = {color: Colors.three, fontSize: 20};

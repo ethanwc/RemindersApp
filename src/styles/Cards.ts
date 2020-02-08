@@ -9,8 +9,8 @@ export const CategoryCard = {
   marginTop: 7.5,
   marginHorizontal: 3.5,
   borderRadius: 4,
-  borderWidth: 0.5,
-  borderColor: Colors.five,
+  borderWidth: .5,
+  borderColor: Colors.four,
 };
 
 export const TaskCard = {

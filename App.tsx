@@ -3,8 +3,9 @@ import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Items from './src/containers/Item/Items';
 import CreateItem from './src/components/CreateItem';
-import {Text, Alert, Button} from 'react-native';
+import {Alert, Button} from 'react-native';
 import React from 'react';
+import Map from './src/components/Map/Map';
 
 const AppNavigator = createStackNavigator({
   LaunchScreen: {
@@ -35,6 +36,9 @@ const AppNavigator = createStackNavigator({
   },
   CreateItem: {
     screen: CreateItem,
+  },
+  Map: {
+    screen: Map,
   },
 });
 

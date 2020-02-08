@@ -16,7 +16,7 @@ const Category = (props: any) => {
         <View style={{margin: 5}}>{myIcon}</View>
         <View>
           <Text style={Typography.Title}>Grocery List</Text>
-          <Text style={Typography.Body}>3 Tasks</Text>
+          <Text style={Typography.Body}>3 billion Tasks</Text>
         </View>
       </View>
     </TouchableHighlight>
