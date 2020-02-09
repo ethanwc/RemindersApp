@@ -14,9 +14,10 @@ import {Cards, Typography} from '../../styles';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from '../../styles';
 import GestureRecognizer from 'react-native-swipe-gestures';
+import {ItemInterface} from './Items';
 
 export interface itemInterface {
-  id: string;
+  item: ItemInterface;
   selected: string;
   setSelected: Function;
 }
@@ -32,21 +33,21 @@ if (Platform.OS === 'android') {
 
 const Item = (props: itemInterface) => {
   const [expanded, setExpanded] = useState(false);
-  const [complete, setComplete] = useState(true);
+  const [complete, setComplete] = useState(props.item.checked);
   const [editing, setEditing] = useState(false);
-  const [star, setStar] = useState(false);
+  const [star, setStar] = useState(props.item.starred);
 
   const changeLayout = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     //off to on
-    if (props.selected === props.id) {
+    if (props.selected === props.item.id) {
       props.setSelected('');
-    } else props.setSelected(props.id);
+    } else props.setSelected(props.item.id);
     //on to off
     if (!editing) setExpanded(!expanded);
   };
 
-  const isExpanded = props.id === props.selected;
+  const isExpanded = props.item.id === props.selected;
 
   const toggleCheck = () => {
     Vibration.vibrate(20);
@@ -82,8 +83,8 @@ const Item = (props: itemInterface) => {
               <View style={{marginHorizontal: 10}}>{checkView}</View>
               {/* <View style={{margin: 5, marginLeft: 0}}>{checked}</View> */}
               <View>
-                <Text style={Typography.Title}>Buy food at the store</Text>
-                <Text style={Typography.Body}>Im Hungry</Text>
+                <Text style={Typography.Title}>{props.item.name}</Text>
+                <Text style={Typography.Body}>{props.item.description}</Text>
               </View>
             </View>
             {/* <View style={{margin: 5}}>{quit}</View> */}
@@ -108,7 +109,7 @@ const Item = (props: itemInterface) => {
                   color={Colors.Colors.two}
                   style={{alignItems: 'center', marginRight: 10}}
                 />
-                <Text>12th March</Text>
+                <Text>{props.item.eventDate}</Text>
               </View>
               <View
                 style={{
