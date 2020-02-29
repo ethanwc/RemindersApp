@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList, AsyncStorage, Button, Alert} from 'react-native';
-import {Typography} from '../../styles';
+import {Typography, Buttons} from '../../styles';
 import Item from './Item';
+import uuid from 'uuid-random';
+import Create from '../../components/Create';
 
 export interface itemsInterface {}
 
@@ -48,7 +50,7 @@ const Items = (props: itemsInterface) => {
 
   const tempAdd = async () => {
     const newItem = {
-      id: 'asdfjkl',
+      id: uuid(),
       name: 'Walk Dog',
       description: 'n/a',
       importance: 1,
@@ -58,7 +60,7 @@ const Items = (props: itemsInterface) => {
       createdDate: new Date().getDate().toString(),
     };
 
-    const updatedItems = items == null ? items : [...items, newItem];
+    const updatedItems = items == null ? [newItem] : [...items, newItem];
 
     await AsyncStorage.setItem('Items', JSON.stringify(updatedItems));
 
@@ -83,6 +85,7 @@ const Items = (props: itemsInterface) => {
         )}
         keyExtractor={item => item.id}
       />
+      <Create navigation={props.navigation} />
     </View>
   );
 };

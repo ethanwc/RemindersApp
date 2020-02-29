@@ -19,6 +19,11 @@ const Launch = (props: any) => {
       name: 'pizzatime',
       description: 'i like piza',
     },
+    {
+      id: 'asdf',
+      name: 'party time',
+      description: 'i like party',
+    },
   ];
 
   return (

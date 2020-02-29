@@ -17,7 +17,7 @@ const Categories = (props: categoriesInterface) => {
       renderItem={({item}) => (
         <View style={{flexDirection: 'row'}}>
           <Category navigation={props.navigation} category={item} />
-          {/* <Category navigation={props.navigation} banana={'hi'} /> */}
+          <Category navigation={props.navigation} category={item} />
         </View>
       )}
       keyExtractor={item => item.id}
